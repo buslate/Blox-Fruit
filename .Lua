@@ -998,7 +998,7 @@ Tabs.Settings:AddButton({
     Description = "Boots Your FPS🌌",
     Callback = function()
         Window:Dialog({
-            Title = "Boots",
+            Title = "Boots(wait 10s)",
             Content = "🚀🌌",
             Buttons = {
                 {
