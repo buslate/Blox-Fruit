@@ -1,20 +1,26 @@
+--cave hub
+
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Cave hub 0.0.1" ,
-    SubTitle = "by me",
+    Title = "Cave hub V.1" ,
+    SubTitle = "Blox Fruit",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
-    Theme = "Dark",
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Darker",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 })
 
 --Fluent provides Lucide Icons https://lucide.dev/icons/ for the tabs, icons are optional
 local Tabs = {
-    Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://14188381395" }),
+    Main = Window:AddTab({ Title = "Main", Icon = "home" }),
+    Stats = Window:AddTab({ Title = "Stats", Icon = "rbxassetid://12967527775" }),
+    Shop = Window:AddTab({ Title = "Shop", Icon = "rbxassetid://11432839196"}),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
 local Options = Fluent.Options
@@ -22,16 +28,16 @@ local Options = Fluent.Options
 do
     Fluent:Notify({
         Title = "Notification",
-        Content = "Beta Test 0.0.1",
+        Content = "Cave Hub NO.1",
         SubContent = "", -- Optional
-        Duration = 8 -- Set to nil to make the notification not disappear
+        Duration = 10 -- Set to nil to make the notification not disappear
     })
 end
 --mainTab
 
 Tabs.Main:AddParagraph({
     Title = "AutoFarm",
-    Content = "FarmLevelMax(250)⚔️ RefreshWeapon(Bug)".."How to Fix : Close all function And Run Again"
+    Content = "FarmLevelMax(250)⚔️"
 })
 
 local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoFarmLevel", Default = false })
@@ -55,11 +61,11 @@ Toggle:OnChanged(function(Value)
         end
         if AUTOHAKIObs then 
             if game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui") and game.Players.LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
-            else wait(1)
-                game:service('VirtualUser'):CaptureController()
-                game:service('VirtualUser'):SetKeyDown('0x65')
+                else wait(1)
+                    game:service('VirtualUser'):CaptureController()
+                    game:service('VirtualUser'):SetKeyDown('0x65')
                 wait(2)
-                game:service('VirtualUser'):SetKeyUp('0x65')
+                    game:service('VirtualUser'):SetKeyUp('0x65')
             end
         end
     end
@@ -197,7 +203,7 @@ spawn(function()
             if _G.AutoFarm then
                 chacklevel()
                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-totarget(CFrameQuest)
+                    totarget(CFrameQuest)
 wait(1)
             local args = {
                 [1] = "StartQuest",
@@ -209,11 +215,11 @@ wait(1)
             elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                if v.Name == Mon and v2.Name == Mon then
-                totarget(v.HumanoidRootPart.CFrame * CFrame.new(0,43,0))
-                v.HumanoidRootPart.Size = Vector3.new(60,100,60)
-                v.HumanoidRootPart.CFrame = CFrameMon
-                v2.HumanoidRootPart.CanCollide = false
+                        if v.Name == Mon and v2.Name == Mon then
+                            totarget(v.HumanoidRootPart.CFrame * CFrame.new(0,43,0))
+                                v.HumanoidRootPart.Size = Vector3.new(60,100,60)
+                                    v.HumanoidRootPart.CFrame = CFrameMon
+                                        v2.HumanoidRootPart.CanCollide = false
                 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
             end
         end    
@@ -225,7 +231,7 @@ wait(1)
 end)
 
 spawn(function()
-    while task.wait(.1) do
+    while task.wait(2) do
         pcall(function()
             if _G.AutoFarm then
                 chacklevel()
@@ -235,30 +241,30 @@ spawn(function()
                     }
                     
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end
+                end
             end
-            end)
-            end
-            end)
+        end)
+    end
+end)
 
 
 spawn(function()
-    while task.wait() do
+    while task.wait(2) do
         pcall(function()
             if _G.AutoFarm then
                 chacklevel()
                 if not game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
                     totarget(CFramePuk)
                 end
-                end
-            end)
-        end
-    end)
+            end
+        end)
+    end
+end)
 
 
 
 spawn(function()
-    while task.wait(.1) do
+    while task.wait(2) do
         pcall(function()
             if _G.AutoFarm then
                 chacklevel()
@@ -266,9 +272,9 @@ spawn(function()
         if v.Name == Mon then
             if v.Humanoid.Health == 0 then
                 v:Destroy()
-            end
-            end
-            end
+                end
+                end
+                end
             end
         end)
     end
@@ -276,11 +282,11 @@ end)
 
 --FastAttack
     _G.FastAttack = Value
-    _G.FastAttackType = "Normal"
+    _G.FastAttackType = "Fast"
 
     local ExamList = {}
     
-    for i = 1, 30 do
+    for i = 1, 100 do
         table.insert(ExamList, "Option "..i)
     end
     local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
@@ -389,102 +395,132 @@ end)
 
 --partใต้ตีน
 
-    do 
-        local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
+do 
+    local NM = game:GetService("Workspace"):FindFirstChild("Noclip")
         if NM then
-            NM:Destroy()
-        end
+        NM:Destroy()
     end
-    local Noclip = Instance.new("Part",Workspace)
-        Noclip.Name = "Noclip"
-        Noclip.CanCollide = true
-        Noclip.Anchored = true
-        Noclip.Transparency = 1
-        Noclip.Size = Vector3.new(60, -5, 60)
-    function Noclip()
-        game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-3,0)
-    end
-    _G.Noclip = Value
-    while _G.Noclip do wait(0.3)
-    pcall(function()
-    Noclip()
-    end)
+end
+local Noclip = Instance.new("Part", Workspace)
+    Noclip.Name = "Noclip"
+    Noclip.CanCollide = true
+    Noclip.Anchored = true
+    Noclip.Transparency = 1
+    Noclip.Size = Vector3.new(50, -5, 50)
+function Noclip()
+    game:GetService("Workspace"):FindFirstChild("Noclip").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -3.7, 0)
+end
+_G.Noclip = Value
+    while _G.Noclip do wait()
+        pcall(function()
+            Noclip()
+        end)
     end
 end)
 Options.MyToggle:SetValue(false)
 
 --autoequipWeapon
-Weapon = {}
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    if v:IsA"Tool" then
-    table.insert(Weapon,v.Name)
-end
-end
+Weapon = {
+	"Melee",
+	"Sword",
+	"Fruit"
+}
+
+task.spawn(function()
+	while wait() do
+		pcall(function()
+			if SelectWeapon == "Melee" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Melee" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.Settings.Configs["Select Weapon"] = v.Name
+						end
+					end
+				end
+			elseif SelectWeapon == "Sword" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Sword" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.Settings.Configs["Select Weapon"] = v.Name
+						end
+					end
+				end
+			elseif SelectWeapon == "Fruit" then
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Blox Fruit" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.Settings.Configs["Select Weapon"] = v.Name
+						end
+					end
+				end
+			else
+				for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+					if v.ToolTip == "Melee" then
+						if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+							_G.Settings.Configs["Select Weapon"] = v.Name
+						end
+					end
+				end
+			end
+		end)
+	end
+end)
+
+
 
 
 local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
-    Title = "Select Weapon",
-    Values = Weapon,
-    Multi = false,
-    Default = 1,
-})
+     Title = "SelectWeapon",
+     Values = Weapon,
+     Multi = false,
+     Default = 1,
+ })
 
-Dropdown:SetValue(false)
+ Dropdown:SetValue()
 
-Dropdown:OnChanged(function(e)
-    Weapon = e
-end)
+ Dropdown:OnChanged(function(Value)
+     SelectWeapon = Value
+ end)
 
-local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoEquipWeapon", Default = false })
 
-    Toggle:OnChanged(function(eq)
-        AutoEquiped = eq
-    end)
 
-    Options.MyToggle:SetValue(false)
+ function EquipSelectedWeapon()
+     if not SelectWeapon then
+         warn("Please select a weapon.")
+         return
+     end
+     
+     -- ค้นหาอาวุธที่ตรงกับที่เลือก
+     for _, tool in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+         if tool:IsA("Tool") and tool.ToolTip == SelectWeapon then
+             local humanoid = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+             if humanoid then
+                 humanoid:EquipTool(tool)
+                 print("Equipped weapon:", tool.Name)
+             else
+                 warn("Unable to find humanoid.")
+             end
+             return -- หยุดการทำงานหลังจากที่ถืออาวุธแล้ว
+         end
+     end
+ end
 
-    spawn(function()
-        while wait() do
-        if AutoEquiped then
-        pcall(function()
-        game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
-        end)
-        end
-        end
-        end)
+ local Toggle = Tabs.Main:AddToggle("MyToggle", {Title = "AutoEquipWeapon", Default = false })
 
---refreshweapon
-Tabs.Main:AddButton({
-    Title = "RefreshWeapon(Bug)",
-    Description = "",
-    Callback = function()
-        Window:Dialog({
-            Title = "Les'go",
-            Content = "",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        table.clear(Weapon)
-                        for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-                            if v:IsA"Tool" then
-                            table.insert(Weapon,v.Name)
-                            Dropdown:Add(v.Name)
-                        end
-                    end
-                end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
-    end
-})
+ Toggle:OnChanged(function(Value)
+     _G.AutoEquip = Value
+     if _G.AutoEquip then
+         while _G.AutoEquip do
+             EquipSelectedWeapon()
+             wait()
+         end
+     end
+ end)
 
+ Options.MyToggle:SetValue(false)
+
+    
+    
 --code
 Tabs.Main:AddParagraph({
     Title = "Code",
@@ -646,10 +682,6 @@ Tabs.Main:AddButton({
 })
 --statsTab
 
-local Tabs = {
-    Stats = Window:AddTab({ Title = "Stats", Icon = "rbxassetid://16641770418" }),
-}
-
 Tabs.Stats:AddParagraph({
     Title = "Stats Tab",
     Content = "📈"
@@ -745,214 +777,184 @@ Options.MyToggle:SetValue(false)
 
 --shopTab
 
-
-local Tabs = {
-    Shop = Window:AddTab({ Title = "Shop", Icon = "rbxassetid://14188616680"}),
-}
 Tabs.Shop:AddParagraph({
-    Title = "Haki Shop",
-    Content = "⚓"
+    Title = "Haki Shop👁️",
+    Content = ""
 })
 
 Tabs.Shop:AddButton({
     Title = "BuyHaki",
     Description = "",
     Callback = function()
-        Window:Dialog({
-            Title = "Are you Sure?",
-            Content = "it(25K)",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        local args = {
-                            [1] = "BuyHaki",
-                            [2] = "Buso"
-                        }
-                        
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
-    end
+        local args = {
+            [1] = "BuyHaki(25k)",
+            [2] = "Buso"
+        }
+        
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end
 })
 
 Tabs.Shop:AddButton({
-    Title = "BuyGeppo",
+    Title = "BuyGeppo(10k)",
     Description = "",
     Callback = function()
-        Window:Dialog({
-            Title = "Are you Sure?",
-            Content = "it(10K)",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        local args = {
-                            [1] = "BuyHaki",
-                            [2] = "Geppo"
-                        }
-                        
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
+        local args = {
+            [1] = "BuyHaki",
+            [2] = "Geppo"
+        }
+        
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
     end
 })
 
 
 Tabs.Shop:AddButton({
-    Title = "BuySoru",
+    Title = "BuySoru(100k)",
     Description = "",
     Callback = function()
-        Window:Dialog({
-            Title = "Are you Sure?",
-            Content = "it(100K)",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        local args = {
-                            [1] = "BuyHaki",
-                            [2] = "Soru"
-                        }
-                        
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
+        local args = {
+            [1] = "BuyHaki",
+            [2] = "Soru"
+        }
+        
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
     end
 })
 
 
 Tabs.Shop:AddParagraph({
-    Title = "Combat Shop",
-    Content = "👊"
+    Title = "Weapon Shop",
+    Content = ""
 })
 
 
 Tabs.Shop:AddButton({
-    Title = "BlackLeg",
+    Title = "BlackLeg(150k)",
     Description = "",
     Callback = function()
-        Window:Dialog({
-            Title = "Are you Sure?",
-            Content = "it(150K)",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        local args = {
-                            [1] = "BuyBlackLeg"
-                        }
-                        
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
+        local args = {
+            [1] = "BuyBlackLeg"
+        }
+        
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
     end
 })
 
-
-local Tabs = {
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
-}
+--setting
 
 Tabs.Settings:AddButton({
-    Title = "Rejoin",
+    Title = "Rejoin Server",
     Description = "",
     Callback = function()
-        Window:Dialog({
-            Title = "🔄️",
-            Content = "Rejoin",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                    local ts = game:GetService("TeleportService")
-
-                    local p = game:GetService("Players").LocalPlayer
-                    ts:Teleport(game.PlaceId, p)
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+        ts:Teleport(game.PlaceId, p)
     end
 })
 
 Tabs.Settings:AddButton({
-    Title = "HopServer",
+    Title = "Hop To Low Server",
     Description = "",
     Callback = function()
-        Window:Dialog({
-            Title = "🌐",
-            Content = "HopServer",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        local Http = game:GetService("HttpService")
-                        local TPS = game:GetService("TeleportService")
-                        local Api = "https://games.roblox.com/v1/games/"
+        local Http = game:GetService("HttpService")
+        local TPS = game:GetService("TeleportService")
+        local Api = "https://games.roblox.com/v1/games/"
+        
+        local _place = game.PlaceId
+        local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+        function ListServers(cursor)
+           local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+           return Http:JSONDecode(Raw)
+        end
+        
+        local Server, Next; repeat
+           local Servers = ListServers(Next)
+           Server = Servers.data[1]
+           Next = Servers.nextPageCursor
+        until Server
+        
+        TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+    end
+})
 
-                        local _place = game.PlaceId
-                        local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
-                        function ListServers(cursor)
-                        local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
-                        return Http:JSONDecode(Raw)
-                        end
+Tabs.Settings:AddButton({
+    Title = "FpsBoots🚀",
+    Description = "",
+    Callback = function()
 
-                        local Server, Next; repeat
-                        local Servers = ListServers(Next)
-                        Server = Servers.data[1]
-                        Next = Servers.nextPageCursor
-                        until Server
-
-                        TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
+local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+sethiddenproperty(l,"Technology",2)
+sethiddenproperty(t,"Decoration",false)
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = 0
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(w:GetDescendants()) do
+    if v:IsA("BasePart") and not v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif (v:IsA("Decal") or v:IsA("Texture")) and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") and decalsyeeted then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    elseif v:IsA("SpecialMesh") and decalsyeeted  then
+        v.TextureId=0
+    elseif v:IsA("ShirtGraphic") and decalsyeeted then
+        v.Graphic=0
+    elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+        v[v.ClassName.."Template"]=0
+    end
+end
+for i = 1,#l:GetChildren() do
+    e=l:GetChildren()[i]
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
+end
+w.DescendantAdded:Connect(function(v)
+    wait()--prevent errors and shit
+   if v:IsA("BasePart") and not v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") and decalsyeeted then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    elseif v:IsA("SpecialMesh") and decalsyeeted then
+        v.TextureId=0
+    elseif v:IsA("ShirtGraphic") and decalsyeeted then
+        v.ShirtGraphic=0
+    elseif (v:IsA("Shirt") or v:IsA("Pants")) and decalsyeeted then
+        v[v.ClassName.."Template"]=0
+    end
+end)
     end
 })
 
@@ -979,67 +981,18 @@ InterfaceManager:SetFolder("FluentScriptHub")
 SaveManager:SetFolder("FluentScriptHub/specific-game")
 
 InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-SaveManager:BuildConfigSection(Tabs.Settings)
-
 
 Window:SelectTab(1)
 
 Fluent:Notify({
     Title = "Notification",
     Content = "The script has been loaded.",
-    Duration = 4
+    Duration = 5
 })
 
 -- You can use the SaveManager:LoadAutoloadConfig() to load a config
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
-Tabs.Settings:AddButton({
-    Title = "FpsBoots🚀",
-    Description = "Boots Your FPS🌌",
-    Callback = function()
-        Window:Dialog({
-            Title = "Boots(wait 10s)",
-            Content = "🚀🌌",
-            Buttons = {
-                {
-                    Title = "Confirm",
-                    Callback = function()
-                        _G.Settings = {
-                            Players = {
-                                ["Ignore Me"] = true, -- Ignore your Character
-                                ["Ignore Others"] = true -- Ignore other Characters
-                            },
-                            Meshes = {
-                                Destroy = false, -- Destroy Meshes
-                                LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
-                            },
-                            Images = {
-                                Invisible = true, -- Invisible Images
-                                LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
-                                Destroy = false, -- Destroy Images
-                            },
-                            ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
-                            ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
-                            ["No Explosions"] = true, -- Makes Explosion's invisible
-                            ["No Clothes"] = true, -- Removes Clothing from the game
-                            ["Low Water Graphics"] = true, -- Removes Water Quality
-                            ["No Shadows"] = true, -- Remove Shadows
-                            ["Low Rendering"] = true, -- Lower Rendering
-                            ["Low Quality Parts"] = true -- Lower quality parts
-                        }
-                        loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
-                    end
-                },
-                {
-                    Title = "Cancel",
-                    Callback = function()
-                        print("Cancelled the dialog.")
-                    end
-                }
-            }
-        })
-    end
-})
 
 
 --auto-rejoin
@@ -1055,3 +1008,37 @@ po.ChildAdded:connect(function(a)
         until false
     end
 end)
+
+
+
+do
+    local ToggleUI = game.CoreGui:FindFirstChild("MyToggle") 
+    if ToggleUI then 
+    ToggleUI:Destroy() 
+    end
+end
+
+local MyToggle = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+--Properties:
+
+MyToggle.Name = "MyToggle"
+MyToggle.Parent = game.CoreGui
+MyToggle.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = MyToggle
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.156000003, 0, -0, 0)
+ImageButton.Size = UDim2.new(0, 50, 0, 50)
+ImageButton.Image = "rbxassetid://16731758728"
+ImageButton.MouseButton1Click:Connect(function()
+game.CoreGui:FindFirstChild("ScreenGui").Enabled = not game.CoreGui:FindFirstChild("ScreenGui").Enabled
+end)
+
+
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = ImageButton
